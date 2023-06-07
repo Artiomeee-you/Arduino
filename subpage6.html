@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    .container {
+  max-width: auto;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 30px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}
+
+code {
+  background-color: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+
+.image-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-container img {
+  width: 400px;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.arduino-code {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+.arduino-function {
+  color: #009688;
+}
+
+.arduino-variable {
+  color: #795548;
+}
+
+.arduino-keyword {
+  color: #4CAF50;
+}
+
+.arduino-comment {
+  color: #757575;
+}
+  </style>
+  <title>Базовые программные конструкции для Arduino</title>
+</head>
+<body>
+  <div class="container">
+    <h3>Базовые программные конструкции для Arduino</h3>
+    <p>Для работы с Arduino используются следующие базовые программные конструкции:</p>
+    <h4>Подключение библиотеки</h4>
+<p>Для использования дополнительных функций и возможностей в Arduino программисты часто подключают библиотеки с помощью директивы <code>#include</code>. Например, чтобы использовать библиотеку для работы с LCD-дисплеем, нужно добавить следующую строку в начало программы:</p>
+<pre class="arduino-code"><code>#include &lt;<span class="arduino-variable">LiquidCrystal</span>.h&gt;</code></pre>
+
+<h4>Инициализация пинов</h4>
+<p>Для взаимодействия с аппаратными компонентами Arduino, такими как светодиоды, кнопки и т.д., нужно инициализировать пины. Например, для инициализации пина 13 как выходного пина:</p>
+<pre class="arduino-code"><code>const <span class="arduino-keyword">int</span> <span class="arduino-variable">ledPin</span> = 13;</code></pre>
+<p>Здесь <code>ledPin</code> - переменная, которая будет хранить номер пина.</p>
+
+<h4>Настройка пинов</h4>
+<p>После инициализации пинов нужно указать их режим работы с помощью функции <code>pinMode()</code>. Например, для установки пина 13 в режим вывода (OUTPUT):</p>
+<pre class="arduino-code"><code>pinMode(<span class="arduino-variable">ledPin</span>, <span class="arduino-keyword">OUTPUT</span>);</code></pre>
+
+<h4>Управление пинами</h4>
+<p>Для управления состоянием пинов, например, для включения и выключения светодиода, используется функция <code>digitalWrite()</code>. Например, для включения светодиода, подключенного к пину 13, используется:</p>
+<pre class="arduino-code"><code>digitalWrite(<span class="arduino-variable">ledPin</span>, <span class="arduino-keyword">HIGH</span>);</code></pre>
+<p>А для выключения:</p>
+<pre class="arduino-code"><code>digitalWrite(<span class="arduino-variable">ledPin</span>, <span class="arduino-keyword">LOW</span>);</code></pre>
+
+<h4>Чтение состояния пина</h4>
+<p>Для чтения состояния пинов, например, для чтения сигнала с кнопки, используется функция <code>digitalRead()</code>. Например, для чтения состояния пина 2:</p>
+<pre class="arduino-code"><code><span class="arduino-keyword">int</span> <span class="arduino-variable">buttonState</span> = digitalRead(2);</code></pre>
+<p>Здесь <code>buttonState</code> - переменная, которая будет хранить состояние пина (высокий уровень - HIGH или низкий уровень - LOW).</p>
+
+<div class="image-container">
+  <a href="https://example.com/image1.jpg" target="_blank">
+    <img src="https://example.com/image1.jpg" alt="Картинка 1">
+  </a>
+  <p>Добавьте в эту картинку описание</p>
+</div>
+
+<div class="image-container">
+  <a href="https://example.com/image2.jpg" target="_blank">
+    <img src="https://example.com/image2.jpg" alt="Картинка 2">
+  </a>
+  <p>Добавьте в эту картинку описание</p>
+</div>
+ </div>
+</body>
+</html>

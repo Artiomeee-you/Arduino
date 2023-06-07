@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример: Измерение расстояния с помощью ультразвукового датчика</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+
+  </style>
+</head>
+<body>
+  <h1>Пример: Измерение расстояния с помощью ультразвукового датчика</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/primf3.jpg" alt="Код программы 3">
+  </div>
+  <p>
+    Данный пример демонстрирует использование ультразвукового датчика для измерения расстояния. Код прогрокраммы инициализирует пины, к которым подключены ультразвуковой датчик (пин Trig для отправки звукового сигнала и пин Echo для принятия отраженного сигнала) как выходные и входные соответственно. Затем с помощью функции <code>pulseIn()</code> происходит измерение времени прохождения звукового сигнала от датчика до объекта и обратно. Используя это время и звуковую скорость, рассчитывается расстояние до объекта.
+
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/chf3.jpg" alt="Схема подключения 3">
+  </div>
+
+  <p>
+    В данном случае, ультразвуковой датчик подключается к пину Trig на Arduino для отправки звукового сигнала и к пину Echo для принятия отраженного сигнала. Подключение датчика к Arduino требует использования резисторов для установки уровней входа и выхода.
+  </p>
+  
+  <button class="button" onclick="window.location.href='file/primf3.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменных для хранения номеров пинов Trig и Echo
+const int trigPin = 2;
+const int echoPin = 3;
+
+// Переменная для хранения расстояния
+float distance;
+
+void setup() {
+  // Инициализация пинов Trig и Echo
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Отправка звукового сигнала
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Измерение времени прохождения звукового сигнала
+  float duration = pulseIn(echoPin, HIGH);
+
+  // Расчет расстояния на основе времени прохождения и звуковой скорости
+  distance = (duration / 2) * 0.0343;
+
+  // Вывод расстояния в монитор последовательного порта
+  Serial.print("Расстояние: ");
+  Serial.print(distance);
+  Serial.println(" см");
+
+  delay(1000);
+}`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

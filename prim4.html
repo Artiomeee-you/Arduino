@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример 4: Использование сервопривода для управления движением</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+
+  </style>
+</head>
+<body>
+  <h1>Пример 4: Использование сервопривода для управления движением</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/prim4.jpg" alt="Код программы 4">
+  </div>
+  
+  <p>
+    В данном примере используется <code>пульсирующий ШИМ (PWM) выходной пин</code> Arduino для управления сервоприводом. Угол поворота
+    сервопривода задается с помощью функции <code>servo.write()</code>, а пин, к которому подключен сервопривод, устанавливается с помощью
+    функции <code>attach()</code>. Сервопривод будет поворачиваться на разные углы в заданной последовательности.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/ch4.jpg" alt="Схема подключения 4">
+  </div>
+  
+  <p>
+    В данной схеме сервопривод подключается к выбранному <code>пульсирующему ШИМ (PWM) выходному пину</code> Arduino. Также в схеме
+    подключен <code>резистор</code> и <code>конденсатор</code>, которые помогают стабилизировать питание сервопривода.
+  </p>
+</body>
+</html>
+<button class="button" onclick="window.location.href='file/prim4.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `#include <Servo.h>
+
+// Определение объекта сервопривода
+Servo servo;
+
+void setup() {
+  // Прикрепление сервопривода к пину 9
+  servo.attach(9);
+}
+
+void loop() {
+  // Поворот сервопривода в одну сторону
+  servo.write(0);
+  delay(1000); // Пауза в 1 секунду
+
+  // Поворот сервопривода в другую сторону
+  servo.write(180);
+  delay(1000); // Пауза в 1 секунду
+}
+`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

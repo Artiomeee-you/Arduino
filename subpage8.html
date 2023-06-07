@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    .container {
+      max-width: auto;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 30px;
+    }
+    h3 {
+      margin-top: 0;
+      font-size: 28px;
+      color: #333;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    .arduino-code {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .arduino-keyword {
+      color: #007bff;
+      font-weight: bold;
+    }
+    .definition-block {
+      margin-bottom: 20px;
+    }
+    .image-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .image-container img {
+      width: 400px;
+      height: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <title>Подробный справочник по Arduino IDE</title>
+</head>
+<body>
+  <div class="container">
+    <h3>Подробный справочник по Arduino IDE</h3>
+    <p>Arduino IDE представляет собой интегрированную среду разработки (Integrated Development Environment) для программирования платформы Arduino. В данном справочнике вы найдете основные конструкции языка Arduino и инструкции по их использованию.</p>
+    <div class="definition-block">
+      <h4>Условные операторы</h4>
+      <h5>Оператор <span class="arduino-keyword">if</span></h5>
+      <p>Оператор <span class="arduino-keyword">if</span> позволяет выполнять определенные действия, если указанное условие истинно:
+        
+      </p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">if</span> (условие) {
+          // код, который будет выполнен, если условие истинно
+        }</code>
+      </div>
+      <h5>Оператор <span class="arduino-keyword">if...else</span></h5>
+      <p>Оператор <span class="arduino-keyword">if...else</span> позволяет выполнить определенный блок кода, если условие истинно, и другой блок кода, если условие ложно:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">if</span> (условие) {
+          // код, который будет выполнен, если условие истинно
+        } <span class="arduino-keyword">else</span> {
+          // код, который будет выполнен, если условие ложно
+        }</code>
+      </div>
+      <h5>Оператор <span class="arduino-keyword">else if</span></h5>
+      <p>Оператор <span class="arduino-keyword">else if</span> позволяет проверить дополнительные условия, если предыдущие условия не выполнились:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">if</span> (условие1) {
+          // код, который будет выполнен, если условие1 истинно
+        } <span class="arduino-keyword">else if</span> (условие2) {
+          // код, который будет выполнен, если условие1 ложно, а условие2 истинно
+        } <span class="arduino-keyword">else</span> {
+          // код, который будет выполнен, если все условия ложны
+        }</code>
+      </div>
+    </div>
+    <div class="definition-block">
+      <h4>Циклы</h4>
+      <h5>Цикл <span class="arduino-keyword">for</span></h5>
+      <p>Цикл <span class="arduino-keyword">for</span> позволяет выполнять повторяющиеся действия определенное количество раз:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">for</span> (инициализация; условие; шаг) {
+          // код, который будет выполняться в цикле
+        }</code>
+      </div>
+      <h5>Цикл <span class="arduino-keyword">while</span></h5>
+      <p>Цикл <span class="arduino-keyword">while</span> выполняет повторяющиеся действия, пока указанное условие истинно:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">while</span> (условие) {
+          // код, который будет выполняться в цикле
+        }</code>
+      </div>
+      <h5>Цикл <span class="arduino-keyword">do...while</span></h5>
+      <p>Цикл <span class="arduino-keyword">do...while</span> выполняет повторяющиеся действия, пока указанное условие истинно. Отличие от цикла <span class="arduino-keyword">while</span> в том, что код внутри цикла выполнится хотя бы один раз:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">do</span> {
+          // код, который будет выполняться в цикле
+        } <span class="arduino-keyword">while</span> (условие);</code>
+      </div>
+    </div>
+    <div class="definition-block">
+      <h4>Операторы управления</h4>
+      <h5>Оператор <span class="arduino-keyword">break</span></h5>
+      <p>Оператор <span class="arduino-keyword">break</span> используется для прерывания выполнения цикла:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">for</span> (int i = 0; i < 10; i++) {
+          <span class="arduino-keyword">if</span> (i == 5) {
+            <span class="arduino-keyword">break</span>; // прервать цикл при i равном 5
+          }
+        }</code>
+      </div>
+      <h5>Оператор <span class="arduino-keyword">continue</span></h5>
+      <p>Оператор <span class="arduino-keyword">continue</span> используется для перехода к следующей итерации цикла, минуя оставшуюся часть текущей итерации:</p>
+      <div class="arduino-code">
+        <code><span class="arduino-keyword">for</span> (int i = 0; i < 10; i++) {
+          <span class="arduino-keyword">if</span> (i == 5) {
+            <span class="arduino-keyword">continue</span>; // перейти к следующей итерации при i равном 5
+          }
+        }</code>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="https://example.com/image1.jpg" target="_blank">
+        <img src="https://example.com/image1.jpg" alt="Картинка 1">
+      </a>
+      <p>Добавьте в эту картинку описание</p>
+    </div>
+    <div class="image-container">
+      <a href="https://example.com/image2.jpg" target="_blank">
+        <img src="https://example.com/image2.jpg" alt="Картинка 2">
+      </a>
+      <p>Добавьте в эту картинку описание</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример: Измерение температуры с Arduino</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+
+  </style>
+</head>
+<body>
+  <h1>Пример: Измерение температуры с Arduino</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/primf1.jpg" alt="Код программы 2">
+  </div>
+  <p>
+    Данный пример демонстрирует использование датчика температуры TMP36 для измерения температуры и вывода ее значения через
+    последовательный порт. Код программы инициализирует аналоговый пин A0 в качестве входа для считывания значения напряжения
+    с датчика. Затем происходит преобразование напряжения в температуру в градусах Цельсия, и результат выводится через
+    последовательный порт с помощью функции <code>Serial.print()</code>.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/chf1.jpg" alt="Схема подключения 1">
+  </div>
+  <p>
+    В данном случае, датчик температуры TMP36 подключается к аналоговому пину A0 на Arduino. Контакт VCC датчика подключается
+    к 5V пину Arduino для обеспечения питания, контакт GND подключается к GND пину Arduino, а контакт OUT подключается к
+    аналоговому пину A0. После подключения датчика Arduino будет считывать напряжение с датчика, которое затем будет
+    преобразовано в температуру.
+  </p>
+
+  <button class="button" onclick="window.location.href='file/primf1.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменной для хранения номера пина датчика температуры
+const int sensorPin = A0;
+
+void setup() {
+  // Инициализация последовательного порта для вывода данных
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Считывание значения напряжения с датчика
+  int sensorValue = analogRead(sensorPin);
+
+  // Преобразование значения напряжения в температуру в градусах Цельсия
+  float temperature = (sensorValue * 5.0 / 1023.0 - 0.5) * 100.0;
+
+  // Вывод значения температуры через последовательный порт
+  Serial.print("Температура: ");
+  Serial.print(temperature);
+  Serial.println("°C");
+
+  delay(1000); // Пауза в 1 секунду
+}`;
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

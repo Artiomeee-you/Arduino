@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример 5: Использование датчика температуры и влажности DHT11</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+
+  </style>
+</head>
+<body>
+  <h1>Пример 5: Использование датчика температуры и влажности DHT11</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/prim5.jpg" alt="Код программы 5">
+  </div>
+  <p>
+    В данном примере используется <code>цифровой входной пин</code> Arduino для считывания данных с датчика DHT11. Функция
+    <code>dht.readTemperature()</code> используется для считывания значения температуры, а функция <code>dht.readHumidity()</code>
+    - для считывания значения влажности. Полученные значения выводятся на серийный монитор с помощью функции <code>Serial.println()</code>.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+  </div>
+  <img src=" chema i kod/ch5.jpg" alt="Схема подключения 5">
+  <p>
+    В данной схеме датчик DHT11 подключается к выбранному <code>цифровому входному пину</code> Arduino. Питание и земля подключаются к
+    соответствующим пинам Arduino.
+  </p>
+</body>
+</html>
+<button class="button" onclick="window.location.href='file/prim5.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `#include <dht11.h>
+dht11 DHT11;// Определение объекта датчика DHT11
+const int dhtPin = 2;// Определение пина для считывания данных с датчика
+
+void setup() {
+  // Начальная настройка монитора порта
+  Serial.begin(9600);
+}
+
+void loop() {
+  int resultCode = DHT11.read(dhtPin);// Считывание данных с датчика
+  // Проверка кода результата
+  switch (resultCode) {
+    case DHTLIB_OK:
+      // Вывод значений температуры и влажности
+      Serial.print("Temperature: ");
+      Serial.print(DHT11.temperature);
+      Serial.print("°C, Humidity: ");
+      Serial.print(DHT11.humidity);
+      Serial.println("%");
+      break;
+    case DHTLIB_ERROR_CHECKSUM:
+      Serial.println("Checksum error"); 
+      break;// Ошибка контрольной суммы
+    case DHTLIB_ERROR_TIMEOUT:
+      // Тайм-аут ожидания считывания данных
+      Serial.println("Timeout error");
+      break;
+    default:
+      // Неизвестная ошибка
+      Serial.println("Unknown error");
+      break;
+  }
+  // Задержка перед следующим считыванием
+  delay(2000);
+}
+`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

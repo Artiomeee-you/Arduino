@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример 3: Использование кнопки для управления светодиодом</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+    }
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Пример 3: Использование кнопки для управления светодиодом</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/prim3.jpg" alt="Код программы 3">
+  </div>
+  
+  <p>
+    В данном примере используется <code>цифровой входной пин</code> Arduino для считывания состояния кнопки. Если кнопка нажата (считанное
+    значение HIGH), то светодиод включается, а если кнопка не нажата (считанное значение LOW), то светодиод выключается. Функция
+    <code>digitalRead()</code> используется для считывания значения с выбранного пина.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/ch3.jpg" alt="Схема подключения 3">
+  </div>
+  
+  <p>
+    В данной схеме кнопка подключается к выбранному <code>цифровому входному пину</code> Arduino, а светодиод подключается к выбранному
+    <code>цифровому выходному пину</code> Arduino. Один конец светодиода подключается к выбранному пину, а другой конец - к <code>резистору</code>,
+    который в свою очередь подключается к <code>GND</code> (земле) Arduino.
+  </p><button class="button" onclick="window.location.href='file/prim3.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменных для хранения номеров пинов
+const int buttonPin = 2;
+const int ledPin = 9;
+
+void setup() {
+  // Установка пина кнопки в режим входа
+  pinMode(buttonPin, INPUT);
+
+  // Установка пина светодиода в режим вывода
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Считывание состояния кнопки
+  int buttonState = digitalRead(buttonPin);
+
+  // Проверка, нажата ли кнопка
+  if (buttonState == HIGH) {
+    // Включение светодиода
+    digitalWrite(ledPin, HIGH);
+  } else {
+    // Выключение светодиода
+    digitalWrite(ledPin, LOW);
+  }
+}`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>
+</body>
+</html>

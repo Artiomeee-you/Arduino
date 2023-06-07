@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример: Измерение уровня освещенности с Arduino</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+
+  </style>
+</head>
+<body>
+  <h1>Пример: Измерение уровня освещенности с Arduino</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/primf2.jpg" alt="Код программы 2">
+  </div>
+  <p>
+    Данный пример демонстрирует использование фоторезистора для измерения уровня освещенности и вывода его значения через
+    последовательный порт. Код программы инициализирует аналоговый пин A0 в качестве входа для считывания значения напряжения
+    с фоторезистора. Затем происходит преобразование напряжения в уровень освещенности, и результат выводится через
+    последовательный порт с помощью функции <code>Serial.print()</code>.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/chf2.jpg" alt="Схема подключения 2">
+  </div>
+  <p>
+    В данном случае, фоторезистор подключается к аналоговому пину A0 на Arduino. Контакт одного конца фоторезистора
+    подключается к 5V пину Arduino для обеспечения питания, контакт другого конца фоторезистора подключается к GND пину Arduino,
+    а контакт между фоторезистором и резистором (например, 10к Ом) подключается к аналоговому пину A0. После подключения
+    фоторезистора Arduino будет считывать напряжение с фоторезистора, которое затем будет преобразовано в уровень освещенности.
+  </p>
+
+  <button class="button" onclick="window.location.href='file/primf2.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменной для хранения номера пина фоторезистора
+const int sensorPin = A0;
+
+void setup() {
+  // Инициализация последовательного порта для вывода данных
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Считывание значения напряжения с фоторезистора
+  int sensorValue = analogRead(sensorPin);
+
+  // Преобразование значения напряжения в уровень освещенности
+  float lightLevel = map(sensorValue, 0, 1023, 0, 100);
+
+  // Вывод значения уровня освещенности через последовательный порт
+  Serial.print("Уровень освещенности: ");
+  Serial.print(lightLevel);
+  Serial.println("%");
+
+  delay(1000); // Пауза в 1 секунду
+}`;
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

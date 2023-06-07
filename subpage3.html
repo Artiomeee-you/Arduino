@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      max-width: auto; /* Установите максимальную ширину контейнера */
+    }
+
+    .content {
+      flex-basis: 100%; /* Измените ширину контейнера по своему усмотрению */
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .description {
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Добавлено для отступа между контентом и кнопками */
+    }
+
+    .buttons button {
+      margin: 0 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .content img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  <title>Arduino Comparison</title>
+</head>
+
+<body>
+
+  
+  <div class="container">
+    <div class="content">
+      <h3>Arduino Uno</h3>
+      <p>
+        Arduino Uno - это популярная модель Arduino с простым использованием и широкой поддержкой сообщества.
+      </p>
+      <p>
+        <strong>Характеристики:</strong>
+        <br>
+        - Микроконтроллер: ATmega328P
+        <br>
+        - Флэш-память: 32 кБ
+        <br>
+        - Оперативная память: 2 кБ
+        <br>
+        - Тактовая частота: 16 МГц
+      </p>
+      <p>
+        <strong>Факты:</strong>
+        <br>
+        - Arduino Uno имеет 14 цифровых пинов, из которых 6 поддерживают ШИМ (3, 5, 6, 9, 10, 11).
+        <br>
+        - Также на плате есть 6 аналоговых пинов (A0-A5).
+      </p>
+      <div class="buttons">
+        <button onclick="showPrevious()">Previous</button>
+        <button onclick="showNext()">Next</button>
+      </div>
+      <img src="img/arduino_uno.jpg" alt="Arduino Uno">
+      <p class="description">Arduino Uno</p>
+    </div>
+  </div>
+
+
+
+  <script>
+    const arduinos = [
+      {
+        name: "Arduino Uno",
+        description: "Arduino Uno - это популярная модель Arduino с простым использованием и широкой поддержкой сообщества.",
+        features: [
+          "Микроконтроллер: ATmega328P",
+          "Флэш-память: 32 кБ",
+          "Оперативная память: 2 кБ",
+          "Тактовая частота: 16 МГц"
+        ],
+        facts: [
+          "Arduino Uno имеет 14 цифровых пинов, из которых 6 поддерживают ШИМ (3, 5, 6, 9, 10, 11).",
+          "Также на плате есть 6 аналоговых пинов (A0-A5)."
+        ],
+        image: "img/arduino_uno.jpg"
+      },
+      {
+        name: "Arduino Nano",
+        description: "Arduino Nano - компактная плата Arduino, идеально подходящая для встраиваемых систем и проектов с ограниченным пространством.",
+        features: [
+          "Микроконтроллер: ATmega328P",
+          "Флэш-память: 32 кБ",
+          "Оперативная память: 2 кБ",
+          "Тактовая частота: 16 МГц"
+        ],
+        facts: [
+          "Arduino Nano имеет 14 цифровых пинов, из которых 6 поддерживают ШИМ (3, 5, 6, 9, 10, 11).",
+          "Также на плате есть 8 аналоговых пинов (A0-A7)."
+        ],
+        image: "img/arduino_nano.jpg"
+      },
+      {
+        name: "Arduino Mega",
+        description: "Arduino Mega - это плата Arduino с большим количеством цифровых и аналоговых пинов, предназначенная для более сложных проектов.",
+        features: [
+          "Микроконтроллер: ATmega2560",
+          "Флэш-память: 256 кБ",
+          "Оперативная память: 8 кБ",
+          "Тактовая частота: 16 МГц"
+        ],
+        facts: [
+          "Arduino Mega имеет 54 цифровых пина, из которых 14 поддерживают ШИМ (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 44, 45).",
+          "Также на плате есть 16 аналоговых пинов (A0-A15)."
+        ],
+        image: "img/arduino_mega.jpg"
+      },
+      {
+        name: "Arduino Leonardo",
+        description: "Arduino Leonardo - это плата Arduino, основанная на микроконтроллере ATmega32u4, который поддерживает виртуальную клавиатуру и мышь.",
+        features: [
+          "Микроконтроллер: ATmega32u4",
+          "Флэш-память: 32 кБ",
+          "Оперативная память: 2.5 кБ",
+          "Тактовая частота: 16 МГц"
+        ],
+        facts: [
+          "Arduino Leonardo имеет 20 цифровых пинов, из которых 7 поддерживают ШИМ (3, 5, 6, 9, 10, 11, 13).",
+          "Также на плате есть 12 аналоговых пинов (A0-A5, A6-A11)."
+        ],
+        image: "img/arduino_leonardo.jpg"
+      }
+    ];
+
+    let currentIndex = 0;
+    const content = document.querySelector('.content');
+
+    function showArduino(index) {
+      const arduino = arduinos[index];
+      content.innerHTML = `
+        <h3>${arduino.name}</h3>
+        <p>${arduino.description}</p>
+        <p><strong>Характеристики:</strong><br>${arduino.features.join('<br>')}</p>
+        <p><strong>Факты:</strong><br>${arduino.facts.join('<br>')}</p>
+        <div class="buttons">
+          <button onclick="showPrevious()">Previous</button>
+          <button onclick="showNext()">Next</button>
+        </div>
+        <img src="${arduino.image}" alt="${arduino.name}">
+        <p class="description">${arduino.name}</p>
+      `;
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % arduinos.length;
+      showArduino(currentIndex);
+    }
+
+    function showPrevious() {
+      currentIndex = (currentIndex - 1 + arduinos.length) % arduinos.length;
+      showArduino(currentIndex);
+    }
+
+    showArduino(currentIndex);
+  </script>
+</body>
+
+</html>
