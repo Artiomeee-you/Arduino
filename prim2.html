@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример 2: Управление яркостью светодиода с помощью потенциометра</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+.image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+    }
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Пример 2: Управление яркостью светодиода с помощью потенциометра</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/prim2.png" alt="Код программы 2">
+  </div>
+  <p>
+    В данном примере используется <code>потенциометр</code> (резистор с переменным сопротивлением) для управления яркостью светодиода.
+    При вращении потенциометра меняется его сопротивление, и это значение считывается в <code>аналоговом входном пине</code> Arduino с помощью
+    функции <code>analogRead()</code>. Затем считанное значение преобразуется в диапазон яркости светодиода (от 0 до 255) с помощью функции
+    <code>map()</code>, и устанавливается с помощью функции <code>analogWrite()</code> на <code>выходном пине</code>, к которому подключен светодиод.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/ch2.png" alt="Схема подключения 2">
+  </div>
+  <p>
+    В данной схеме потенциометр подключается к одному из <code>аналоговых входных пинов</code> (например, A0) Arduino. Один конец потенциометра
+    подключается к напряжению питания платы Arduino (<code>5V</code>), другой конец - к земле (<code>GND</code>), а серединка - к выбранному аналоговому
+    входному пину. Светодиод, который управляется яркостью, подключается к выбранному <code>выходному пину</code>, к которому также подключается
+    резистор с ограничивающим сопротивлением для контроля тока.
+  </p>
+  <button class="button" onclick="window.location.href='file/prim2.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменных для хранения номеров пинов
+const int potentiometerPin = A0;
+const int ledPin = 9;
+
+void setup() {
+  // Установка пина светодиода в режим вывода
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Считывание значения с потенциометра
+  int potValue = analogRead(potentiometerPin);
+
+  // Преобразование значения в диапазоне от 0 до 1023 в диапазон от 0 до 255
+  int brightness = map(potValue, 0, 1023, 0, 255);
+
+  // Установка яркости светодиода
+  analogWrite(ledPin, brightness);
+}`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>

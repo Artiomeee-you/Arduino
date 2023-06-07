@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пример 1: Включение и выключение светодиода</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c7254e;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .image {
+      max-width: 400px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .image:hover {
+      transform: scale(2.0);
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Пример 1: Включение и выключение светодиода</h1>
+  <h2>Код программы:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/prim1.png" alt="Код программы 1">
+  </div>
+  <p>
+    Данный пример демонстрирует основной принцип работы Arduino - управление аппаратными компонентами через программный код.
+    Код программы инициализирует пин, к которому подключен светодиод, как выходной пин. Затем с помощью функции <code>digitalWrite()</code>
+    устанавливает высокий уровень (<code>HIGH</code>), что включает светодиод, и низкий уровень (<code>LOW</code>), что выключает светодиод.
+  </p>
+  <h2>Схема подключения:</h2>
+  <div class="image-container">
+    <img class="image" src="chema i kod/ch1.png" alt="Схема подключения 1">
+  </div>
+  
+  <p>
+    В данном случае, светодиод подключается к пину 13 на Arduino. Один конец светодиода подключается к выбранному пину, а другой
+    конец подключается к земле (GND) платы Arduino через резистор с ограничивающим сопротивлением. Это позволяет контролировать
+    ток, проходящий через светодиод, и предотвращает его перегрев или повреждение.
+  </p>
+  
+  <button class="button" onclick="window.location.href='file/prim1.rar'">Скачать файл</button>
+  <button class="button" onclick="copyToClipboard()">Копировать код</button>
+
+  <script>
+    function copyToClipboard() {
+      var code = `// Определение переменной для хранения номера пина светодиода
+const int ledPin = 13;
+
+void setup() {
+  // Установка пина светодиода в режим вывода
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Включение светодиода
+  digitalWrite(ledPin, HIGH);
+  delay(1000); // Пауза в 1 секунду
+
+  // Выключение светодиода
+  digitalWrite(ledPin, LOW);
+  delay(1000); // Пауза в 1 секунду
+}`;
+
+      navigator.clipboard.writeText(code)
+        .then(function() {
+          alert("Код скопирован в буфер обмена.");
+        })
+        .catch(function(error) {
+          console.error("Ошибка при копировании кода: ", error);
+        });
+    }
+  </script>
+</body>
+</html>
+
